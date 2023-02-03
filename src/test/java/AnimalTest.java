@@ -4,23 +4,18 @@ import java.util.List;
 import static org.junit.Assert.assertEquals;
 
 public class AnimalTest {
-
+    private final String herbivore = "Травоядное";
     @Test
     public void herbivoreTest() throws Exception {
         Animal animal = new Animal();
-        List<String> getFood = animal.getFood("Травоядное");
+        List<String> getFood = animal.getFood(herbivore);
         assertEquals(List.of("Трава", "Различные растения"), getFood);
     }
 
-    @Test
+    @Test(expected = Exception.class)
     public void foodExceptionTest() throws Exception {
-        try {
             Animal animal = new Animal();
             animal.getFood("Всеядное");
-        }
-        catch (Exception exception){
-            assertEquals("Неизвестный вид животного, используйте значение Травоядное или Хищник" , exception.getMessage());
-        }
     }
 
     @Test

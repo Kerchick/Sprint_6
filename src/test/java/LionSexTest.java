@@ -22,26 +22,21 @@ public class LionSexTest {
     private final String maleSex = "Самец";
 
     @Test
-    public void LionMaleTest() throws Exception {
+    public void lionMaleTest() throws Exception {
         new Lion(maleSex, feline);
         assertEquals("Самец", maleSex);
     }
 
 
     @Test
-    public void LionFemaleTest() throws Exception {
+    public void lionFemaleTest() throws Exception {
         new Lion(femaleSex, feline);
         assertEquals("Самка", femaleSex);
 
     }
 
-    @Test
-    public void LionHaveSexExceptionTest() throws Exception {
-        try {
+    @Test(expected = Exception.class)
+    public void lionHaveSexExceptionTest() throws Exception {
             new Lion(randomSex, feline);
         }
-        catch (Exception exception) {
-            assertEquals("Используйте допустимые значения пола животного - самец или самка", exception.getMessage());
-        }
-    }
 }
